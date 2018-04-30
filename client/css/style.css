@@ -1,0 +1,48 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.box{
+  display:flex;
+  flex-wrap:wrap;
+  margin: 15% auto;
+  max-width: 350px;
+  min-width:290px;
+  height: 370px;
+  border-radius: 20px;
+  background-color:black;
+  align-content:space-evenly;
+  border: 10px ridge gray;
+}
+
+.item{
+  display:flex;
+  width:30%;
+  height:33%;
+  color:white;
+  background-color:black;
+  border-right: 2px inset blue;
+  border-bottom: 2px groove blue;
+  border-radius: 15px;
+  flex-grow:1;
+}
+
+.X{
+  color:gray;
+  justify-content:center;
+  align-items:center;
+  font-size:500%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

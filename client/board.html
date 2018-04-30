@@ -1,0 +1,103 @@
+
+ <html lang="en">
+ 
+ <head>
+ <link rel = "stylesheet"
+   type = "text/css"
+   href = "/client/css/style.css" />
+ 
+<script src ="/client/js/jquery.min.js"></script>
+ </head>
+
+<body>
+<div class="box"> 
+  <span class="item X" id="0"></span>
+  <span class="item X" id="1"></span>
+  <span class="item X" id="2"></span>
+  <span class="item X" id="3"></span>
+  <span class="item X" id="4"></span>
+  <span class="item X" id="5"></span>
+  <span class="item X" id="6"></span>
+  <span class="item X" id="7"></span>
+  <span class="item X" id="8"></span>
+</div>
+
+</body>
+
+</html>
+
+<script>
+    
+    $(document).ready(function() {
+  var lastPlayer = "O";
+  var firstPlayer = "X";
+  var computer = "O";
+  var Player1 = [];
+  var AI = [];
+  var Game = [];
+  var isAIMove;
+  var AIid;
+  var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  var winningCombinations = ['012','036','048','147','246','258','345','678'];
+
+
+
+  $("#0,#1,#2,#3,#4,#5,#6,#7,#8").on("click", function() {
+ 
+     paintMove(event.target.id,"X",true);
+     isAIMove = true;
+     
+     Player1.push(event.target.id);
+     
+     if(isAIMove == true){
+      AIid = AITurn();
+     }
+     
+     Game.push(event.target.id);
+     Game.push(AIid);
+     
+    console.log(Player1);
+    console.log(AI);
+    console.log(Game);
+     
+ });
+ 
+  //Bool parameter for tracking First Player Moves
+  var paintMove = function(id,coin,bool){
+       if(AreaEmpty(id)) {
+         $("#"+id).html(coin);
+
+    }
+  };
+  
+  
+  var AreaEmpty = function(id){
+   // alert("ID  :"+id);
+     return Boolean($("#" + id).text() == "");
+  };
+  
+
+  
+var AITurn = function(){
+    var id;
+    var count = 9;
+    do{  
+    id = Math.floor((Math.random() * 9) + 0);
+
+    count--;
+    if(count < 0 ){ break;}
+    }
+    while(AreaEmpty(id) == false)
+
+    paintMove(id,"O",true);
+    isAIMove = false;
+    
+    AI.push(id);
+    
+    return id;
+};
+  
+
+});
+    
+</script>
