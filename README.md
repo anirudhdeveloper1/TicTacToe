@@ -1,22 +1,29 @@
+Welcome to my TicTacToe game! 
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+This would be a machine learning Tic Tac Toe game which would read from the MongoDb Database to determine how to win. 
+
+I am presently in the process of training the AI and collecting some game data. 
+
+You can run the board.html file and initate a game. However, the AI would only be dropping random moves for now. This game data would be used for training AI in the future. 
 
 
-Welcome to your Node.js project on Cloud9 IDE!
+Overview:
 
-This chat example showcases how to use `socket.io` with a static `express` server.
+Board.html - This will be the html page with some jquery and javascript.
 
-## Running the server
+Style.css - This is the styling for the page. I have used css flexbox as well.
 
-1) Open `server.js` and start the app by clicking on the "Run" button in the top menu.
+config- database.js - Connection string for Mongodb
 
-2) Alternatively you can launch the app from the Terminal:
+Model Folder(
 
-    $ node server.js
+game.js - This is where mongoose will be talking to MongoDb cloud. This will keep track of who wins and who loses and would save it in my MongoDB MLab account.
 
-Once the server is running, open the project in the shape of 'https://projectname-username.c9users.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+Winner.js - This will track whether the player has won or lost depending on the moves. 
+
+AI.js - This would be the bayesian algorithm which the computer would be using in the future to determine its next move. 
+
+)
+
+Thanks for dropping by here! Appreciate your time! 
+
