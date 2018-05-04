@@ -5,8 +5,9 @@
  <link rel = "stylesheet"
    type = "text/css"
    href = "/client/css/style.css" />
- 
-<script src ="/client/js/jquery.min.js"></script>
+ <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
  </head>
 
 <body>
@@ -93,6 +94,23 @@ var AITurn = function(){
     isAIMove = false;
     
     AI.push(id);
+    
+    if(AI.length > 2){
+     
+      $.ajax({
+          type:'POST',
+          //data: JSON.stringify([1, 2, 3]),
+          data: { array: AI },
+          dataType: 'jsonp',
+          contentType: 'application/json',
+          url: 'http://tictactoe-anirudhdeveloper.c9users.io:8081/trackMove',
+          success:function(data){
+           console.log(JSON.stringify(data));
+          }
+      });
+      
+    }
+    
     
     return id;
 };

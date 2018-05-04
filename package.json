@@ -1,13 +1,30 @@
 {
-  "name": "chat-example",
-  "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
-  "main": "server.js",
-  "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "A tic tac toe game with machine learning algorithm",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anirudhdeveloper1/TicTacToe.git"
+  },
+  "author": "Anirudh",
   "dependencies": {
     "async": "~0.2.8",
-    "express": "~3.2.4",
+    "express": "^3.2.6",
     "socket.io": "~0.9.14"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "machine",
+    "learning",
+    "tictactoe"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anirudhdeveloper1/TicTacToe/issues"
+  },
+  "homepage": "https://github.com/anirudhdeveloper1/TicTacToe#readme"
 }

@@ -1,12 +1,31 @@
-const mongoose = require('mongoose');
-const config = require('./config/database');
+const express = require('express');
+//const router = express.Router();
+const app = express();
 
-mongoose.connect(config.database);
+app.use(express.bodyParser());
 
-mongoose.connection.on('connected', () =>{
-    console.log('Connected to database '+config.database);
+const game = require('./models/game'); 
+
+
+app.get('/trackmove',function(req,res){
+   //console.log(req.body.arr[0]);
+   console.log(req.query.array);
+   res.json({"foo": "bar"});
+   //res.send('WEEEE');
+    
 });
 
-mongoose.connection.on('error', (err) =>{
-    console.log('Database error '+err);
+const port =  8081;
+
+app.get('/', function(req, res){
+     console.log(req.query.array);
+  res.status(200).send('Hello');
 });
+
+app.listen(port,() =>{
+    console.log('Server started on port ' + port);
+});
+
+module.exports = app;
+
+
