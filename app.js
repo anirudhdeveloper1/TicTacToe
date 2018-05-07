@@ -1,19 +1,42 @@
 const express = require('express');
 //const router = express.Router();
+const game = require('./models/game'); 
+const winner = require('./models/winner');
+
+const bodyParser = require('body-parser');
 const app = express();
 
-app.use(express.bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-const game = require('./models/game'); 
 
 
-app.get('/trackmove',function(req,res){
-   //console.log(req.body.arr[0]);
-   console.log(req.query.array);
-   res.json({"foo": "bar"});
-   //res.send('WEEEE');
+
+app.post('/trackmove',function(req,res){
+    res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   
+   console.log(req.body);
+
+  console.log(req.body.array[0]);
+  
+  var test = req.body.array;
+  var test1 = [];
     
+    let ar = test.map(item => item);
+    console.log(ar);
+
+   
+    winner.checkWin.apply(this,ar);
+   
+   
+   res.json({foo: "bar"});
+
 });
+
+
 
 const port =  8081;
 

@@ -33,11 +33,12 @@
   var lastPlayer = "O";
   var firstPlayer = "X";
   var computer = "O";
-  var Player1 = [];
+  var Player = [];
   var AI = [];
   var Game = [];
   var isAIMove;
   var AIid;
+  var Plid;
   var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   var winningCombinations = ['012','036','048','147','246','258','345','678'];
 
@@ -45,10 +46,12 @@
 
   $("#0,#1,#2,#3,#4,#5,#6,#7,#8").on("click", function() {
  
-     paintMove(event.target.id,"X",true);
+ //    paintMove(event.target.id,"X",true);
+
+     Player1(event.target.id);
      isAIMove = true;
      
-     Player1.push(event.target.id);
+     //Player1.push(event.target.id);
      
      if(isAIMove == true){
       AIid = AITurn();
@@ -57,7 +60,7 @@
      Game.push(event.target.id);
      Game.push(AIid);
      
-    console.log(Player1);
+    console.log(Player);
     console.log(AI);
     console.log(Game);
      
@@ -76,7 +79,30 @@
    // alert("ID  :"+id);
      return Boolean($("#" + id).text() == "");
   };
-  
+
+var Player1 = function(pid){
+
+   Player.push(pid);
+   paintMove(pid,"X",true);
+
+   if(Player.length > 2){
+    alert("point reached");
+         $.ajax({
+          url: 'http://tictactoe-anirudhdeveloper.c9users.io:8081/trackMove',
+          data: { array: Player } ,
+          type:'POST',
+          success:function(data){
+           alert('success');
+           console.log(JSON.stringify(data));
+          },
+          error: function (request, status, error) {
+           alert('error ' +error);
+          console.log(request.responseText);
+    }
+      });
+   }
+   
+}  
 
   
 var AITurn = function(){
@@ -98,15 +124,17 @@ var AITurn = function(){
     if(AI.length > 2){
      
       $.ajax({
-          type:'POST',
-          //data: JSON.stringify([1, 2, 3]),
-          data: { array: AI },
-          dataType: 'jsonp',
-          contentType: 'application/json',
           url: 'http://tictactoe-anirudhdeveloper.c9users.io:8081/trackMove',
+          data: { array: AI } ,
+          type:'POST',
           success:function(data){
+           alert('success');
            console.log(JSON.stringify(data));
-          }
+          },
+          error: function (request, status, error) {
+           alert('error ' +error);
+          console.log(request.responseText);
+    }
       });
       
     }
