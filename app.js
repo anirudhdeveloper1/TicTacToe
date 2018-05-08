@@ -12,27 +12,23 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-
-
 app.post('/trackmove',function(req,res){
     res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   
-   console.log(req.body);
 
-  console.log(req.body.array[0]);
-  
-  var test = req.body.array;
-  var test1 = [];
-    
-    let ar = test.map(item => item);
-    console.log(ar);
+    var isWin = winner.checkWin.apply(this,req.body.array);
 
-   
-    winner.checkWin.apply(this,ar);
-   
-   
-   res.json({foo: "bar"});
+    res.send(isWin);
+
+});
+
+app.post('/recordgame',function(req,res){
+    res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    var isSuccess = game.recordGame.apply(this,req.body.array);
+
+    res.send(isSuccess);
 
 });
 
